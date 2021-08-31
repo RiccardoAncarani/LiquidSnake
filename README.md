@@ -48,7 +48,7 @@ Usage of this project is straightforward, use `LiquidSnake.exe` agains a host wh
 ```
 LiquidSnake.exe <host> [<username> <password> <domain>]
 LiquidSnake.exe dc01.isengard.local
-LiquidSnake.exe dc01.isengard.local saruman deahtoFrodo123 isengard.local
+LiquidSnake.exe dc01.isengard.local saruman DeathToFrodo123 isengard.local
 ```
 
 NOTE: Currently thers is a bug when you explicitly set user credentials, the tool will not work in that case. It is recommended to use `make_token` or any other impersonation mechanism instead.
