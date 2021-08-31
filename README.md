@@ -3,6 +3,11 @@
 Liquid Snake is a program aimed at performing lateral movement against Windows systems without touching the disk.
 The tool relies on WMI Event Subscription in order to execute a .NET assembly in memory, the .NET assembly will listen for a shellcode on a named pipe and then execute it using a variation of the thread hijacking shellcode injection.
 
+The diagram below (hopefully) clarifies the flow of data:
+
+![](images/poc.jpeg)
+
+
 ## Credits 
 
 - [MDSec - WMI Event Subscription](https://www.mdsec.co.uk/2020/09/i-like-to-move-it-windows-lateral-movement-part-1-wmi-event-subscription/) - this tool is merely an implementation of the concept described in this blog post, the code also relies on Dominic's WMI persistence C Sharp PoC
@@ -69,3 +74,8 @@ send_shellcode_via_pipe \\.\pipe\6e7645c4-32c5-4fe3-aabf-e94c2f4370e7 beacon.bin
 ```
 
 ## Detection
+
+There are many detection opportunities to identify the abuse of this tool and in general the use of this technique:
+
+- Module load events for `clr.dll` related to the `scrcons.exe` process
+- Creation of a named pipe related to the `scrcons.exe` process 
