@@ -59,7 +59,7 @@ If everything went fine, you should obtain an output similar as the following:
 [*] Event filter created.
 [*] Event consumer created.
 [*] Subscription created, now sleeping
-[*] Second some DCOM love..
+[*] Sending some DCOM love..
 [*] Sleeping again... long day
 ```
 

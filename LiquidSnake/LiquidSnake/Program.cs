@@ -87,7 +87,7 @@ namespace LiquidSnake
 
                 System.Threading.Thread.Sleep(10000);
 
-                Console.WriteLine("[*] Second some DCOM love..");
+                Console.WriteLine("[*] Sending some DCOM love..");
 
                 try
                 {
