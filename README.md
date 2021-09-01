@@ -97,3 +97,7 @@ There are many detection opportunities to identify the abuse of this tool and in
 - Creation and deletion of a WMI Event Filter in a short period of time, see Sysmon event IDs 19, 20, 21, 22
 - Module load events for `clr.dll` related to the `scrcons.exe` process
 - Creation of a named pipe related to the `scrcons.exe` process 
+
+Additionally, the biggest drawback of the specific implementation is that the shellcode is sent in cleartext over SMB. Meaning that if a network monitor solution is able to inspect that traffic, it is likely that it will stand out. I haven't done much testing against zeek/bro ruleset but I am pretty confident that it will be picked up immediately.
+
+In the `detection-artefacts` folder I left the PCAP file of a Wireshark capture and the Sysmon events generated during the attack (using Swift On Security's default config).
